@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import foodRouter from './src/routers/food.Routes.js';
-import userRouter from './src/routers/user.Routes.js';
-import orderRouter from './src/routers/order.Routes.js';
-import uploadRouter from './src/routers/upload.Routes.js';
-import cartRouter from './src/routers/cart.Routes.js'
+import foodRouter from './routers/food.Routes.js';
+import userRouter from './routers/user.Routes.js';
+import orderRouter from './routers/order.Routes.js';
+import uploadRouter from './routers/upload.Routes.js';
+import cartRouter from './routers/cart.Routes.js'
 
 const app = express();
 

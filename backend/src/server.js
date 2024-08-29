@@ -3,7 +3,7 @@ dotenv.config();
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { dbconnect } from './config/databaseConfig.js';
-import app from '../app.js';
+import app from './app.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

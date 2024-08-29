@@ -2,5 +2,5 @@
   "compilerOptions": {
     "moduleResolution": "node"
   },
-  "include": ["src", "app.js"]
+  "include": ["src", "src/app.js"]
 }
