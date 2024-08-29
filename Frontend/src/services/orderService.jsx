@@ -21,6 +21,16 @@ export const getNewOrderForCurrentUser = async () => {
     throw new Error('Failed to retrieve new order. Please try again later.');
   }
 };
+// Capture payment
+export const capturePayment = async (data) => {
+  try {
+    const { response } = await axios.post('/api/orders/capture', data);
+    return response.data;
+  } catch (error) {
+    console.error('Capture payment error:', error);
+    throw new Error('Failed to capture payment. Please try again later.');
+  }
+};
 
 // Pay for an order
 export const pay = async (paymentId) => {
