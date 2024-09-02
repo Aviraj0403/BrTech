@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { createOrder } from '../../services/orderService';
-import classes from './checkoutPage.module.css';
+import './checkoutPage.css';
 import Title from '../../components/Title/Title';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -40,11 +40,11 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className={classes.container}>
+    <div>
       <form onSubmit={handleSubmit(submit)}>
-        <div className={classes.content}>
+        <div>
           <Title title="Order Form" fontSize="1.6rem" />
-          <div className={classes.inputs}>
+          <div>
             <Input
               defaultValue={user.name}
               label="Name"
@@ -69,7 +69,7 @@ export default function CheckoutPage() {
             }}
           />
         </div>
-        <div className={classes.buttons_container}>
+        <div>
           <Button
             type="submit"
             text="Go To Payment"

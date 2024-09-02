@@ -1,0 +1,37 @@
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+.tag-link {
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid  var(--gold-crayola);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.tag-link:hover {
+  background-color: var(--gold-crayola); 
+}
+
+.tag-link:active {
+  background-color: var(--gold-crayola); 
+}
+
+.over-slider {
+  z-index: 5;
+}
+
+.highlight-all .tag-link {
+  background: linear-gradient(90deg, #6a11cb, #2575fc); /* Example: Different gradient */
+}
+
+/* Style for the active tag */
+.active-tag {
+  border: 2px solid #fff;
+}

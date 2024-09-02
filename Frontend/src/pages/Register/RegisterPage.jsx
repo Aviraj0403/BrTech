@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Input from '../../components/Input/Input';
 import Title from '../../components/Title/Title';
-import classes from './registerPage.module.css';
 import Button from '../../components/Button/Button';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { EMAIL } from '../../constants/patterns';
+import './RegisterPage.css';
 
 export default function RegisterPage() {
   const { user, register: registerUser, loading, error } = useAuth();
@@ -31,101 +31,120 @@ export default function RegisterPage() {
     try {
       await registerUser(data);
     } catch (error) {
-      // Handle registration errors if needed
       console.error('Registration error:', error);
     }
   };
 
   return (
-    <div className={classes.container}>
-      <div className={classes.details}>
-        <Title title="Register" />
-        <form onSubmit={handleSubmit(submit)} noValidate>
-          <Input
-            type="text"
-            label="Name"
-            autoComplete="name" // Added autocomplete
-            {...register('name', {
-              required: 'Name is required',
-              minLength: {
-                value: 5,
-                message: 'Name must be at least 5 characters long',
-              },
-            })}
-            error={errors.name?.message}
-          />
+    <div className="main-registerpage-container">
+      <div className="register-container">
+        <div className="register-box">
+          <h1 className="register-title">Register</h1>
+          <form className="register-form" onSubmit={handleSubmit(submit)} noValidate>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                className="form-input"
+                autoComplete="name"
+                {...register('name', {
+                  required: 'Name is required',
+                  minLength: {
+                    value: 5,
+                    message: 'Name must be at least 5 characters long',
+                  },
+                })}
+              />
+              <p className="form-error">{errors.name?.message}</p>
+            </div>
 
-          <Input
-            type="email"
-            label="Email"
-            autoComplete="email" // Added autocomplete
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: EMAIL,
-                message: 'Invalid email address',
-              },
-            })}
-            error={errors.email?.message}
-          />
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                className="form-input"
+                autoComplete="email"
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: EMAIL,
+                    message: 'Invalid email address',
+                  },
+                })}
+              />
+              <p className="form-error">{errors.email?.message}</p>
+            </div>
 
-          <Input
-            type="password"
-            label="Password"
-            autoComplete="new-password" // Added autocomplete
-            {...register('password', {
-              required: 'Password is required',
-              minLength: {
-                value: 5,
-                message: 'Password must be at least 5 characters long',
-              },
-            })}
-            error={errors.password?.message}
-          />
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                className="form-input"
+                autoComplete="new-password"
+                {...register('password', {
+                  required: 'Password is required',
+                  minLength: {
+                    value: 5,
+                    message: 'Password must be at least 5 characters long',
+                  },
+                })}
+              />
+              <p className="form-error">{errors.password?.message}</p>
+            </div>
 
-          <Input
-            type="password"
-            label="Confirm Password"
-            autoComplete="new-password" // Added autocomplete
-            {...register('confirmPassword', {
-              required: 'Confirm Password is required',
-              validate: value =>
-                value !== getValues('password')
-                  ? 'Passwords do not match'
-                  : true,
-            })}
-            error={errors.confirmPassword?.message}
-          />
+            <div className="form-group">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                className="form-input"
+                autoComplete="new-password"
+                {...register('confirmPassword', {
+                  required: 'Confirm Password is required',
+                  validate: value =>
+                    value !== getValues('password')
+                      ? 'Passwords do not match'
+                      : true,
+                })}
+              />
+              <p className="form-error">{errors.confirmPassword?.message}</p>
+            </div>
 
-          <Input
-            type="text"
-            label="Address"
-            autoComplete="street-address" // Added autocomplete
-            {...register('address', {
-              required: 'Address is required',
-              minLength: {
-                value: 10,
-                message: 'Address must be at least 10 characters long',
-              },
-            })}
-            error={errors.address?.message}
-          />
+            <div className="form-group">
+              <label htmlFor="address">Address</label>
+              <input
+                type="text"
+                id="address"
+                className="form-input"
+                autoComplete="street-address"
+                {...register('address', {
+                  required: 'Address is required',
+                  minLength: {
+                    value: 10,
+                    message: 'Address must be at least 10 characters long',
+                  },
+                })}
+              />
+              <p className="form-error">{errors.address?.message}</p>
+            </div>
 
-          <Button
-            type="submit"
-            text={loading ? 'Registering...' : 'Register'}
-            disabled={loading}
-          />
+            <button type="submit" className="register-button">
+              {loading ? 'Registering...' : 'Register'}
+            </button>
 
-          <div className={classes.login}>
-            Already a user? &nbsp;
-            <Link to={`/login${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
-              Login here
-            </Link>
-          </div>
+            <div className="login-link">
+              Already a user? &nbsp;
+              <Link to={`/login${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
+                Login here
+              </Link>
+            </div>
 
-          {error && <p className={classes.error}>Registration failed: {error.message}</p>}
-        </form>
+            {error && <p className="form-error">Registration failed: {error.message}</p>}
+          </form>
+        </div>
       </div>
     </div>
   );
