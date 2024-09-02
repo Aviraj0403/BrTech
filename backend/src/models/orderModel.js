@@ -11,11 +11,11 @@ export const LatLngSchema = new Schema(
     _id: false,
   }
 );
-export const BookTableInfoSchema = new Schema({
-  tableNumber: { type: String, required: true },
-  numberOfPersons: { type: String, required: true },
-  mobileNumber: { type: String, required: true },
-});
+// export const BookTableInfoSchema = new Schema({
+//   tableNumber: { type: String, required: true },
+//   numberOfPersons: { type: String, required: true },
+//   mobileNumber: { type: String, required: true },
+// });
 
 export const OrderItemSchema = new Schema(
   {
@@ -42,8 +42,8 @@ const orderSchema = new Schema(
     address: { type: String, required: true },
     addressLatLng: { type: LatLngSchema, required: false },
     paymentId:{ type: Boolean, default: false },
-    bookTableInfo:{ type: BookTableInfoSchema, required: true },
-    amount: { type: Number, required: true },
+    // bookTableInfo:{ type: BookTableInfoSchema, required: true },
+    // amount: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
     items: { type: [OrderItemSchema], required: true },
     status: { type: String, default: OrderStatus.NEW },
