@@ -30,7 +30,7 @@ const placeOrderWithRazorpay = async (req, res) => {
       address,
       name,
       addressLatLng,
-      bookTableInfo
+      // bookTableInfo
     } = req.body;
   
     console.log('Received Order Data:', req.body); 
@@ -62,7 +62,7 @@ const placeOrderWithRazorpay = async (req, res) => {
         address,
         name,
         addressLatLng: addressLatLng || null, 
-        bookTableInfo
+        // bookTableInfo
       });
   
       await order.save();
@@ -107,6 +107,7 @@ const capturePayment = async (req, res) => {
     }
 
     order.paymentId = true;
+    // order.paymentId = razorpayPaymentId;
     await order.save();
 
     res.json({ success: true, message: 'Payment successful' });

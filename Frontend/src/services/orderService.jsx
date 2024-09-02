@@ -1,16 +1,48 @@
 import axios from 'axios';
 
 // Create a new order
+// export const createOrder = async (order) => {
+//   try {
+//     const { data } = await axios.post('/api/orders/place', order);
+//     return data;
+//   } catch (error) {
+//     console.error('Create order error:', error);
+//     throw new Error('Failed to create order. Please try again later.');
+//   }
+// };
+// // export const createOrder = async (orderData) => {
+//   try {
+//     const response = await axios.post('/api/orders/place', orderData);
+//     return response.data;
+//   } catch (error) {
+//     throw new Error('Failed to create order: ' + error.response?.data?.message || error.message);
+//   }
+// };
+
 export const createOrder = async (order) => {
   try {
-    const { data } = await axios.post('/api/orders/create', order);
+    const { data } = await axios.post('/api/orders/place', {
+      user: order.user,  // User ID
+      items: order.items.map(item => ({
+        food: item.food,
+        price: item.price,
+        quantity: item.quantity
+      })),
+      totalPrice: order.totalPrice,
+      amount: order.totalPrice,
+      name: order.name,
+      address: order.address,
+      addressLatLng: order.addressLatLng ? {
+        lat: order.addressLatLng.lat,
+        lng: order.addressLatLng.lng
+      } : null,
+    });
     return data;
   } catch (error) {
     console.error('Create order error:', error);
     throw new Error('Failed to create order. Please try again later.');
   }
 };
-
 // Get the new order for the current user
 export const getNewOrderForCurrentUser = async () => {
   try {
