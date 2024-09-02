@@ -5,10 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon -r dotenv/config --experimental-json-modules src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node src/server.js",
+  "dev": "nodemon -r dotenv/config --experimental-json-modules src/server.js",
+  "build": "echo \"No build step defined\"",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "keywords": [],
   "author": "Avi Raj",
   "license": "ISC",
