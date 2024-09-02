@@ -6,6 +6,16 @@ import Thumbnails from '../../components/Thumbnails/Thumbnails';
 import { getAll, getAllByTag, getAllTags, search } from '../../services/foodService';
 import NotFound from '../../components/NotFound/NotFound';
 import { toast } from 'react-toastify';
+import Footer from '../../components/Footer/Footer';
+import UpcomingEvent from '../../components/UpcomingEvent/UpcomingEvent';
+import FoodMenu from '../../components/FoodMenu/FoodMenu';
+import FoodItem from '../../components/Thumbnails/Thumbnails';
+import Carousel from '../../components/Carousel/Carousel';
+import Header from '../../components/Header/Header';
+import Asidebar from '../../components/Asidebar/Asidebar';
+import About from '../About/About';
+import SpecialDish from '../SpecialDish/SpecialDish';
+import Offers from '../OffersPage/OffersPage';
 
 const initialState = { foods: [], tags: [], isLoading: true, error: null };
 
@@ -60,16 +70,26 @@ export default function HomePage() {
   }, [searchTerm, tag]);
 
   if (isLoading) {
+    
     return <p>Loading...</p>;
   }
 
   return (
     <>
-      <Search />
-      <Tags tags={tags} />
+      {/* <Search /> */}
+      {/* {foods.length === 0 && <NotFound linkText="Reset Search" />} */}
       {error && <p className="error">{error}</p>}
-      {foods.length === 0 && <NotFound linkText="Reset Search" />}
-      <Thumbnails foods={foods} />
+      <div class="primary-screen">
+        <Header />
+        <Asidebar/>
+        <Carousel/>
+      </div>
+      <About/>
+      <Offers/>
+      <SpecialDish/>
+      <FoodMenu  foods={foods} tags={tags} />
+      <UpcomingEvent/>
+      <Footer/>
     </>
   );
 }
