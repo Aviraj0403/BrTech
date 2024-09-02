@@ -219,8 +219,8 @@ aside {
 .btn-login {
     border: 2px solid var(--gold-crayola);
     padding: 0 !important;
-    width: 200px !important;
-    height: 50px;
+    width: 150px !important;
+    height: 40px !important;
     position: relative;
     overflow: hidden;
 }
